@@ -12,6 +12,9 @@
   "dependencies": {
     "@apollo/client": "3.8.0-alpha.15",
     "@apollo/experimental-nextjs-app-support": "^0.1.0",
+    "@apollo/server": "^4.7.1",
+    "@as-integrations/next": "^2.0.0",
+    "@graphql-tools/schema": "^10.0.0",
     "@types/node": "20.2.5",
     "dotenv-cli": "^7.2.1",
     "dotenv-safe": "^8.2.0",
