@@ -13,10 +13,9 @@ import {
   getAnimals,
   updateAnimalById,
 } from '../../../database/animals';
-import { isUserAdminBySessionToken } from '../../../database/user';
+import { isUserAdminBySessionToken } from '../../../database/users';
 
 type AnimalInput = {
-  id: string;
   firstName: string;
   type: string;
   accessory: string;
