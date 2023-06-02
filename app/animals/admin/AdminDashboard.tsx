@@ -102,7 +102,7 @@ export default function AdminDashboard() {
 
   const [handleDeleteAnimal] = useMutation(deleteAnimalMutation, {
     onError: (error) => {
-      setOnError(error.graphQLErrors[0].message);
+      setOnError(error.message);
     },
 
     onCompleted: async () => {
