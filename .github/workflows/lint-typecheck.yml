@@ -22,8 +22,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build Next.js app
-        run: pnpm build
       - name: Run TypeScript Compiler
         run: pnpm tsc
       - name: Run ESLint
