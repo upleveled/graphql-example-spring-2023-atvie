@@ -5,6 +5,12 @@ jobs:
   lint:
     name: lint
     runs-on: ubuntu-latest
+    env:
+      PGHOST: localhost
+      PGDATABASE: next_js_example_spring_2023
+      PGUSERNAME: next_js_example_spring_2023
+      PGPASSWORD: next_js_example_spring_2023
+      NEXT_PUBLIC_GIT_HUB_API: xxxxxxxxxxxxxxxxx
 
     steps:
       - name: Checkout code
