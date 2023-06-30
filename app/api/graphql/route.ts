@@ -4,7 +4,7 @@ import { startServerAndCreateNextHandler } from '@as-integrations/next';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { GraphQLError } from 'graphql';
 import { cookies } from 'next/headers';
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import {
   createAnimal,
   deleteAnimalById,
@@ -14,6 +14,13 @@ import {
   updateAnimalById,
 } from '../../../database/animals';
 import { isUserAdminBySessionToken } from '../../../database/users';
+import { Animal } from '../../../migrations/1685696908-create-table-animals';
+
+export type GraphQlResponseBody =
+  | {
+      animal: Animal;
+    }
+  | Error;
 
 type AnimalInput = {
   firstName: string;
@@ -188,10 +195,8 @@ const handler = startServerAndCreateNextHandler<NextRequest>(apolloServer, {
   },
 });
 
-export async function GET(req: NextRequest) {
-  return await handler(req);
-}
-
-export async function POST(req: NextRequest) {
-  return await handler(req);
+export async function POST(
+  req: NextRequest,
+): Promise<NextResponse<GraphQlResponseBody>> {
+  return (await handler(req)) as NextResponse<GraphQlResponseBody>;
 }
