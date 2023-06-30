@@ -1,11 +1,12 @@
 import 'server-only';
-import { config } from 'dotenv-safe';
 import postgres from 'postgres';
+import { setEnvironmentVariables } from '../ley.config.mjs';
 
-if (!process.env.POSTGRES_URL) {
-  config();
-}
+// This loads all environment variables from a .env file
+// for all code after this line
+setEnvironmentVariables();
 
+// Type needed for the connection function below
 declare module globalThis {
   let postgresSqlClient: ReturnType<typeof postgres> | undefined;
 }
@@ -15,10 +16,6 @@ declare module globalThis {
 function connectOneTimeToDatabase() {
   if (!globalThis.postgresSqlClient) {
     globalThis.postgresSqlClient = postgres({
-      host: process.env.POSTGRES_HOST || process.env.PG_HOST,
-      username: process.env.POSTGRES_USER || process.env.PGUSERNAME,
-      password: process.env.POSTGRES_PASSWORD || process.env.PGPASSWORD,
-      database: process.env.POSTGRES_DATABASE || process.env.PGDATABASE,
       ssl: !!process.env.POSTGRES_URL,
       transform: {
         ...postgres.camel,
