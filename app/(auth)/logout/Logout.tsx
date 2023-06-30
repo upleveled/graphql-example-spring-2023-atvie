@@ -46,5 +46,5 @@ export default function Logout(props: Props) {
     });
   });
 
-  return { onError };
+  return <div>{onError}</div>;
 }
