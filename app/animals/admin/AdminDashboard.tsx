@@ -80,6 +80,8 @@ export default function AdminDashboard() {
 
   const router = useRouter();
 
+  const { data, refetch } = useSuspenseQuery<AnimalResponse>(getAnimals);
+
   const [handleCreateAnimal] = useMutation(createAnimal, {
     variables: {
       firstName,
@@ -97,8 +99,6 @@ export default function AdminDashboard() {
       router.refresh();
     },
   });
-
-  const { data, refetch } = useSuspenseQuery<AnimalResponse>(getAnimals);
 
   const [handleDeleteAnimal] = useMutation(deleteAnimalMutation, {
     onError: (error) => {
