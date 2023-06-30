@@ -195,6 +195,12 @@ const handler = startServerAndCreateNextHandler<NextRequest>(apolloServer, {
   },
 });
 
+export async function GET(
+  req: NextRequest,
+): Promise<NextResponse<GraphQlResponseBody>> {
+  return (await handler(req)) as NextResponse<GraphQlResponseBody>;
+}
+
 export async function POST(
   req: NextRequest,
 ): Promise<NextResponse<GraphQlResponseBody>> {
