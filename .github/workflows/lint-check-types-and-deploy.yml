@@ -1,5 +1,4 @@
 name: Linting and type checking
-# activate on push
 on: push
 jobs:
   lint:
@@ -26,7 +25,6 @@ jobs:
       - uses: pnpm/action-setup@v2
         with:
           version: '8'
-
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
@@ -41,6 +39,5 @@ jobs:
         run: pnpm tsc
       - name: Run ESLint
         run: pnpm eslint . --max-warnings 0
-
       - name: Run linter
         run: pnpm lint
