@@ -1,5 +1,5 @@
 name: Linting and type checking
-
+# activate on push
 on: push
 jobs:
   lint:
