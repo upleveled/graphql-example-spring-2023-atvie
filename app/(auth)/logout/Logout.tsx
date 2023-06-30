@@ -41,8 +41,10 @@ export default function Logout(props: Props) {
     const logout = async () => {
       await logoutHandler();
     };
-    logout();
-  }, [props.fakeSessionToken]);
+    logout().catch((error) => {
+      setOnError(error.message);
+    });
+  });
 
-  return null;
+  return { onError };
 }
