@@ -1,8 +1,8 @@
-name: Linting and type checking
+name: Lint and check types
 on: push
 jobs:
-  lint:
-    name: lint
+  lint-and-check-types:
+    name: Lint and check types
     runs-on: ubuntu-latest
     env:
       NEXT_PUBLIC_GIT_HUB_API: xxxxxxxxxxxxxxxxx
