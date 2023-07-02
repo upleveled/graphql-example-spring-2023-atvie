@@ -5,11 +5,11 @@ jobs:
     name: lint
     runs-on: ubuntu-latest
     env:
+      NEXT_PUBLIC_GIT_HUB_API: xxxxxxxxxxxxxxxxx
       PGHOST: localhost
       PGDATABASE: next_js_example_spring_2023
       PGUSERNAME: next_js_example_spring_2023
       PGPASSWORD: next_js_example_spring_2023
-      NEXT_PUBLIC_GIT_HUB_API: xxxxxxxxxxxxxxxxx
     steps:
       - name: Start preinstalled PostgreSQL on Ubuntu
         run: |
