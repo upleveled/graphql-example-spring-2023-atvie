@@ -12,7 +12,7 @@ export const { getClient } = registerApolloClient(() => {
 
   // Local server Link
   const localLink = new HttpLink({
-    uri: 'http://localhost:3000/api/graphql',
+    uri: 'https://graphql-example-spring-2023-austria-vienna.vercel.app/api/graphql',
     credentials: 'same-origin',
   });
 
