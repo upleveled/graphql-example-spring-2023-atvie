@@ -39,5 +39,3 @@ jobs:
         run: pnpm tsc
       - name: Run ESLint
         run: pnpm eslint . --max-warnings 0
-      - name: Run linter
-        run: pnpm lint
