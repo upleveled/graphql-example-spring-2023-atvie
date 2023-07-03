@@ -27,7 +27,6 @@ type AnimalInput = {
   type: string;
   accessory: string;
 };
-type LogoutArgument = { fakeSessionToken: string | undefined };
 
 type Args = {
   id: string;
@@ -69,8 +68,6 @@ const typeDefs = gql`
     ): Animal
 
     login(username: String!, password: String!): Animal
-
-    logout(fakeSessionToken: String): Animal
   }
 `;
 
@@ -160,17 +157,6 @@ const resolvers = {
       });
 
       return await getAnimalByFirstName(args.username);
-    },
-
-    logout: async (parent: null, args: LogoutArgument) => {
-      //  FIXME: Implement secure authentication
-
-      // Deleting a fake session token
-      if (!args.fakeSessionToken) return undefined;
-      await cookies().set(args.fakeSessionToken, '', {
-        path: '/',
-        maxAge: -1,
-      });
     },
   },
 };
