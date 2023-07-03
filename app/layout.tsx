@@ -4,6 +4,7 @@ import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { getClient } from '../util/apolloClient';
 import { ApolloClientProvider } from './ApolloClientProvider';
+import { LogoutButton } from './LogoutButton';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -53,7 +54,7 @@ export default async function RootLayout({
           </div>
           <span>{data.loggedInAnimalByFirstName?.firstName}</span>
           {data.loggedInAnimalByFirstName?.firstName ? (
-            <Link href="/logout">Logout</Link>
+            <LogoutButton />
           ) : (
             <Link href="/login">Login</Link>
           )}
