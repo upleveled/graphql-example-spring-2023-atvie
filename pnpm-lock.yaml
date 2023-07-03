@@ -9,8 +9,8 @@ dependencies:
     specifier: 3.8.0-beta.5
     version: 3.8.0-beta.5(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0)
   '@apollo/experimental-nextjs-app-support':
-    specifier: ^0.1.0
-    version: 0.1.0(@apollo/client@3.8.0-beta.5)(next@13.4.4)(react@18.2.0)
+    specifier: ^0.3.2
+    version: 0.3.2(@apollo/client@3.8.0-beta.5)(next@13.4.4)(react@18.2.0)
   '@apollo/server':
     specifier: ^4.7.1
     version: 4.7.1(encoding@0.1.13)(graphql@16.6.0)
@@ -153,10 +153,10 @@ packages:
       zen-observable-ts: 1.2.5
     dev: false
 
-  /@apollo/experimental-nextjs-app-support@0.1.0(@apollo/client@3.8.0-beta.5)(next@13.4.4)(react@18.2.0):
-    resolution: {integrity: sha512-RBDzsZLHYBnbPkh3NVlIZUxynO2ASbCpO7JEmcZRZIzMbCMpH6wXmPrenD6hxOEgLxWzxS2F3q5VlTGXtmb3ww==}
+  /@apollo/experimental-nextjs-app-support@0.3.2(@apollo/client@3.8.0-beta.5)(next@13.4.4)(react@18.2.0):
+    resolution: {integrity: sha512-h219jTHVl7vR6RtUv9GJrv8+EbtQpUUvcNrM4aPWqOMvq1vN95T33Z96la7iWEWruwBvcWQD7UreAOdbd432Gw==}
     peerDependencies:
-      '@apollo/client': '>= 3.8.0-alpha.13'
+      '@apollo/client': '>=3.8.0-beta.4'
       next: ^13.4.1
       react: ^18
     dependencies:
