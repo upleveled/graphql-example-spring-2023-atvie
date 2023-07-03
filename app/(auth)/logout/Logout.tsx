@@ -44,7 +44,7 @@ export default function Logout(props: Props) {
     logout().catch((error) => {
       setOnError(error.message);
     });
-  });
+  }, [logoutHandler]);
 
   return <div>{onError}</div>;
 }
