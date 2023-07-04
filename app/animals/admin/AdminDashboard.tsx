@@ -80,6 +80,8 @@ export default function AdminDashboard() {
 
   const router = useRouter();
 
+  const { data, refetch } = useSuspenseQuery<AnimalResponse>(getAnimals);
+
   const [handleCreateAnimal] = useMutation(createAnimal, {
     variables: {
       firstName,
@@ -97,8 +99,6 @@ export default function AdminDashboard() {
       router.refresh();
     },
   });
-
-  const { data, refetch } = useSuspenseQuery<AnimalResponse>(getAnimals);
 
   const [handleDeleteAnimal] = useMutation(deleteAnimalMutation, {
     onError: (error) => {
@@ -175,7 +175,7 @@ export default function AdminDashboard() {
       <hr />
       <p className="error">{onError}</p>
       <br />
-      {data?.animals.map((animal) => {
+      {data.animals.map((animal) => {
         const isEditing = onEditId === animal.id;
         return (
           <div key={`${animal.firstName}-${animal.id}`}>

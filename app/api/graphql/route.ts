@@ -4,7 +4,7 @@ import { startServerAndCreateNextHandler } from '@as-integrations/next';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { GraphQLError } from 'graphql';
 import { cookies } from 'next/headers';
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import {
   createAnimal,
   deleteAnimalById,
@@ -14,13 +14,19 @@ import {
   updateAnimalById,
 } from '../../../database/animals';
 import { isUserAdminBySessionToken } from '../../../database/users';
+import { Animal } from '../../../migrations/1685696908-create-table-animals';
+
+export type GraphQlResponseBody =
+  | {
+      animal: Animal;
+    }
+  | Error;
 
 type AnimalInput = {
   firstName: string;
   type: string;
   accessory: string;
 };
-type LogoutArgument = { fakeSessionToken: string | undefined };
 
 type Args = {
   id: string;
@@ -62,8 +68,6 @@ const typeDefs = gql`
     ): Animal
 
     login(username: String!, password: String!): Animal
-
-    logout(fakeSessionToken: String): Animal
   }
 `;
 
@@ -154,17 +158,6 @@ const resolvers = {
 
       return await getAnimalByFirstName(args.username);
     },
-
-    logout: async (parent: null, args: LogoutArgument) => {
-      //  FIXME: Implement secure authentication
-
-      // Deleting a fake session token
-      if (!args.fakeSessionToken) return undefined;
-      await cookies().set(args.fakeSessionToken, '', {
-        path: '/',
-        maxAge: -1,
-      });
-    },
   },
 };
 
@@ -188,10 +181,14 @@ const handler = startServerAndCreateNextHandler<NextRequest>(apolloServer, {
   },
 });
 
-export async function GET(req: NextRequest) {
-  return await handler(req);
+export async function GET(
+  req: NextRequest,
+): Promise<NextResponse<GraphQlResponseBody>> {
+  return (await handler(req)) as NextResponse<GraphQlResponseBody>;
 }
 
-export async function POST(req: NextRequest) {
-  return await handler(req);
+export async function POST(
+  req: NextRequest,
+): Promise<NextResponse<GraphQlResponseBody>> {
+  return (await handler(req)) as NextResponse<GraphQlResponseBody>;
 }
