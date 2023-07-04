@@ -5,9 +5,10 @@ jobs:
     name: Lint and check types
     runs-on: ubuntu-latest
     env:
+      NEXT_PUBLIC_BASE_URL: http://localhost:3000
       NEXT_PUBLIC_GIT_HUB_API: xxxxxxxxxxxxxxxxx
-      PGHOST: localhost
       PGDATABASE: next_js_example_spring_2023
+      PGHOST: localhost
       PGUSERNAME: next_js_example_spring_2023
       PGPASSWORD: next_js_example_spring_2023
     steps:
