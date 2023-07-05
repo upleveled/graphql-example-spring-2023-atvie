@@ -27,6 +27,7 @@ export const { getClient } = registerApolloClient(() => {
     localLink,
   );
 
+  headers();
   return new ApolloClient({
     cache: new InMemoryCache(),
     link,
