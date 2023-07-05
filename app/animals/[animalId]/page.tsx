@@ -2,8 +2,6 @@ import { gql } from '@apollo/client';
 import Image from 'next/image';
 import { getClient } from '../../../util/apolloClient';
 
-export const dynamic = 'force-dynamic';
-
 type Props = {
   params: { animalId: string };
 };
