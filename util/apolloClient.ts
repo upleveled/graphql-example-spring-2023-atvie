@@ -27,6 +27,7 @@ export const { getClient } = registerApolloClient(() => {
     localLink,
   );
 
+  // Call `headers()` from next/headers to trigger Next.js Dynamic Rendering.
   headers();
   return new ApolloClient({
     cache: new InMemoryCache(),
