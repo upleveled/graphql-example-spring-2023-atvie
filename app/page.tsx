@@ -43,8 +43,6 @@ export default async function Home() {
     `,
   });
 
-  console.log('Data: ', data);
-
   return (
     <main
       style={{
