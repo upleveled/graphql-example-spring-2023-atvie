@@ -1,5 +1,6 @@
 import { ApolloClient, HttpLink, InMemoryCache, split } from '@apollo/client';
 import { registerApolloClient } from '@apollo/experimental-nextjs-app-support/rsc';
+import { headers } from 'next/headers';
 
 export const { getClient } = registerApolloClient(() => {
   // GitHub Link
@@ -26,6 +27,8 @@ export const { getClient } = registerApolloClient(() => {
     localLink,
   );
 
+  // Call `headers()` from next/headers to trigger Next.js Dynamic Rendering.
+  headers();
   return new ApolloClient({
     cache: new InMemoryCache(),
     link,
