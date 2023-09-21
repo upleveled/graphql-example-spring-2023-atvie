@@ -19,7 +19,7 @@
     "dotenv-cli": "^7.2.1",
     "dotenv-safe": "^8.2.0",
     "encoding": "^0.1.13",
-    "graphql": "^16.6.0",
+    "graphql": "^16.8.1",
     "ley": "^0.8.1",
     "next": "13.4.4",
     "postgres": "^3.3.5",
